@@ -30,8 +30,9 @@ services:
         condition: service_healthy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.tsapp.rule=Host(`dayan2.devtscape.org`)"
-      - "traefik.http.routers.tsapp.entrypoints=web" # or websecure if you have SSL setup on your global Traefik
+      - "traefik.http.routers.tsapp.rule=Host(`dayan3.devtscape.org`)"
+      - "traefik.http.routers.tsapp.entrypoints=websecure"
+      - "traefik.http.routers.tsapp.tls.certresolver=myresolver" # Replace 'myresolver' with your Traefik generic resolver, or remove line if using wildcard
       - "traefik.http.services.tsapp.loadbalancer.server.port=8080"
     networks:
       - traefik
