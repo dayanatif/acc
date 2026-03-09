@@ -42,7 +42,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    await SeedData.SeedRolesAndAdminAsync(services, "mohid.rehman04@gmail.com");
+    await SeedData.SeedRolesAndAdminAsync(services, "raodayanatif@gmail.com");
 }
 
 
