@@ -1,23 +1,6 @@
 version: '3.8'
 
 services:
-  traefik:
-    image: traefik:v2.10
-    container_name: traefik
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "80:80"
-      - "8080:8080" # Traefik dashboard
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    networks:
-      - tsapp-network
-    restart: unless-stopped
-
   db:
     image: mysql:8.0
     container_name: tsapp_db
@@ -27,7 +10,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - tsapp-network
+      - traefik
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
@@ -42,23 +25,21 @@ services:
     container_name: tsapp
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      # The appsettings.json has the connection string and SMTP details already updated properly.
     depends_on:
       db:
         condition: service_healthy
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.tsapp.rule=Host(`dayan2.devtscape.org`)"
-      - "traefik.http.routers.tsapp.entrypoints=web"
+      - "traefik.http.routers.tsapp.entrypoints=web" # or websecure if you have SSL setup on your global Traefik
       - "traefik.http.services.tsapp.loadbalancer.server.port=8080"
     networks:
-      - tsapp-network
+      - traefik
     restart: unless-stopped
 
 networks:
-  tsapp-network:
-    name: tsapp-network
-    driver: bridge
+  traefik:
+    external: true
 
 volumes:
   db_data:
