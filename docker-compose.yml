@@ -32,8 +32,22 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.tsapp.rule=Host(`dayan3.devtscape.org`)"
       - "traefik.http.routers.tsapp.entrypoints=websecure"
-      - "traefik.http.routers.tsapp.tls.certresolver=myresolver" # Replace 'myresolver' with your Traefik generic resolver, or remove line if using wildcard
+      - "traefik.http.routers.tsapp.tls.certresolver=myresolver"
       - "traefik.http.services.tsapp.loadbalancer.server.port=8080"
+    networks:
+      - traefik
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana_dashboard
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
     networks:
       - traefik
     restart: unless-stopped
@@ -44,3 +58,4 @@ networks:
 
 volumes:
   db_data:
+  grafana_data:
