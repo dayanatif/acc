@@ -38,6 +38,18 @@ services:
       - traefik
     restart: unless-stopped
 
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - traefik
+    restart: unless-stopped
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana_dashboard
@@ -59,3 +71,4 @@ networks:
 volumes:
   db_data:
   grafana_data:
+  prometheus_data:

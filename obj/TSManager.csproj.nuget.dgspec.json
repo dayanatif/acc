@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Study\\mohid\\TSManager\\TSManager\\TSManager.csproj": {}
+    "C:\\Users\\HP Pavilion\\OneDrive\\Desktop\\TSAPP\\TSManager.csproj": {}
   },
   "projects": {
-    "C:\\Study\\mohid\\TSManager\\TSManager\\TSManager.csproj": {
+    "C:\\Users\\HP Pavilion\\OneDrive\\Desktop\\TSAPP\\TSManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Study\\mohid\\TSManager\\TSManager\\TSManager.csproj",
+        "projectUniqueName": "C:\\Users\\HP Pavilion\\OneDrive\\Desktop\\TSAPP\\TSManager.csproj",
         "projectName": "TSManager",
-        "projectPath": "C:\\Study\\mohid\\TSManager\\TSManager\\TSManager.csproj",
-        "packagesPath": "C:\\Users\\mohid\\.nuget\\packages\\",
-        "outputPath": "C:\\Study\\mohid\\TSManager\\TSManager\\obj\\",
+        "projectPath": "C:\\Users\\HP Pavilion\\OneDrive\\Desktop\\TSAPP\\TSManager.csproj",
+        "packagesPath": "C:\\Users\\HP Pavilion\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP Pavilion\\OneDrive\\Desktop\\TSAPP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mohid\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\HP Pavilion\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -79,6 +79,10 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "prometheus-net.AspNetCore": {
+              "target": "Package",
+              "version": "[8.2.1, )"
             }
           },
           "imports": [
@@ -92,6 +96,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -100,7 +122,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

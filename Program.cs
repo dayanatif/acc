@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Prometheus;
 using TSManager.Data;
 using TSManager.Services;
 
@@ -58,6 +59,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+// Export metrics to Prometheus
+// http://localhost:PORT/metrics
+app.UseMetricServer();
+app.UseHttpMetrics();
+
 
 app.UseAuthentication();
 app.UseAuthorization();
